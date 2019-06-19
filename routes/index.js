@@ -11,9 +11,15 @@ app.options('*',cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.post('/create/user',(req,res,next)=>{
-    const {nombre,btc,eth} = req.body;
-    let newUser = Users(req.body);
+app.get('/',(req,res,next)=>{
+    res.send({'message':'Server On'});
+});
 
-    
+// app.post('/create/user',(req,res,next)=>{
+//     const {nombre,btc,eth} = req.body;
+//     let newUser = Users(req.body); 
+// });
+
+app.listen(PORT,()=>{
+    console.log(`Me levanté en el puerto ${PORT}`);
 })
