@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 
-const mongoURL = 'URL de mongoDB';
+const mongoURL = 'mongodb+srv://ezal:<password>@cluster0-1f3pk.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(mongoURL,{useNewUrlParser:true},(err)=>{
     if(!err) console.log('Base conectada !!');
 });
 
-const Schema = new mongoose.Schema;
+const schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const userSchema = new schema({
+    correo:{type:String,required:true,unique:true},
     name:{ type:String, require:true},
-    btc:{type : Number, min : 0},
-    eth:{type: Number, min: 0}
-    // cartera: [{type: Object}]
+    pass: String
 });
 
 const Users = mongoose.model('Users',userSchema);
